@@ -98,6 +98,7 @@ Route::any('orm3',['uses'=>'StudentController@orm3']);
 Route::any('orm4',['uses'=>'StudentController@orm4']);
 Route::any('section1',['uses'=>'StudentController@section1']);
 Route::any('url',['as'=>'url','uses'=>'StudentController@urlTest']);
+Route::any('student/request1',['uses'=>'StudentController@request1']);
 
 //Route::controller('member','MemberController'); //5.2已经不支持
 
