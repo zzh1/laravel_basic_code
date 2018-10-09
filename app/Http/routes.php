@@ -100,6 +100,22 @@ Route::any('section1',['uses'=>'StudentController@section1']);
 Route::any('url',['as'=>'url','uses'=>'StudentController@urlTest']);
 Route::any('student/request1',['uses'=>'StudentController@request1']);
 
+// 宣传页面
+Route::any('activity0',['uses'=>'StudentController@activity0']);
+// 活动页面
+Route::group(['middleware'=>['activity']],function (){
+    Route::any('activity1',['uses'=>'StudentController@activity1']);
+    Route::any('activity2',['uses'=>'StudentController@activity2']);
+});
+
+Route::group(['middleware'=>['web']],function (){
+    Route::any('session1',['uses'=>'StudentController@session1']);
+    Route::any('session2',[
+        'as'=>'session2',
+        'uses'=>'StudentController@session2']);
+    Route::any('response',['uses'=>'StudentController@response']);
+});
+
 //Route::controller('member','MemberController'); //5.2已经不支持
 
 /*

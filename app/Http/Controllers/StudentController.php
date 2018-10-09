@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -300,9 +301,129 @@ class StudentController extends Controller
 //        var_dump($res);
 
         echo $request->url();
+    }
+
+    public function session1(Request $request)
+    {
+        // 1. HTTP request session()
+//        $request->session()->put('key1','value1');
+//        echo $request->session()->get('key1');
+
+        // 2. session()
+//        session()->put('key2','value2');
+//        echo session()->get('key2');
+
+        // 3. Session
+        // 存储数据到Session
+//        Session::put('key3','value3');
+
+        //获取Session的值
+//        echo Session::get('key3');
+        // 不存在则去默认值
+//        echo Session::get('key4','default');
+
+        // 以数组的形式存储数据
+//        Session::put(['key4'=>'value4']);
+
+        // 把数据放到Session数组中
+//        Session::push('student','sean');
+//        Session::push('student','imooc');
+//        $res = Session::get('student','default');
+//        var_dump($res);
+
+        //取出数据并删除
+//        $res = Session::pull('student','default');
+//        var_dump($res);
+
+        // 取出所有的值
+//        $res = Session::all();
+//        dd($res);
+
+        // 判断session中某个key是否存在
+//        if(Session::has('key1')){
+//            $res = Session::all();
+//            dd($res);
+//        }else{
+//            echo '你们老大不在';
+//        }
+
+        // 暂存数据
+        Session::flash('key-flash','val-flash');
 
 
     }
+
+    public function session2(Request $request)
+    {
+        return Session::get('message','暂无信息');
+
+//        return 'session2';
+
+//        echo Session::get('key-flash');
+
+        // 获取session所有的数据
+//        $res = Session::all();
+//        dd($res);
+
+        // 删除session中指定的key值
+//        Session::forget('key3');
+
+        // 清空所有session信息
+//        Session::flush();
+
+//        $res = Session::all();
+//        dd($res);
+
+
+    }
+
+    public function response()
+    {
+        // 响应json
+//        $data = [
+//            'errCode' => 0,
+//            'errMsg' => 'success',
+//            'data' => 'sean'
+//        ];
+
+//        return response()->json($data);
+
+        // 4.重定向
+//        return redirect('session2');
+
+//        return redirect('session2')->with('message','我是快闪数据');
+
+        //action()
+//        return redirect()->action('StudentController@session2')
+//            ->with('message','我是快闪数据');
+
+        // route()
+//        return redirect()->route('session2')
+//            ->with('message','我是快闪数据');
+
+        //返回上一个页面
+        return redirect()->back();
+
+    }
+
+    // 活动的宣传页面
+    public function activity0()
+    {
+        return '活动快要开始啦，敬请期待';
+    }
+
+    //
+    public function activity1()
+    {
+        return '活动进行中，谢谢您的参与1';
+    }
+
+    public function activity2()
+    {
+        return '活动进行中，谢谢您的参与2';
+    }
+
+
 
 }
 
